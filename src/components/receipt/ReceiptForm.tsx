@@ -84,6 +84,7 @@ export function ReceiptForm({ onShowHistory,onShowAnalytics }: ReceiptFormProps)
       toast({ title: "Client Name Required", description: "Please enter a client name before saving.", variant: "destructive" });
       return;
     }
+    generateFromPreview(receipt.clientName)
 
     try {
 
@@ -96,7 +97,6 @@ export function ReceiptForm({ onShowHistory,onShowAnalytics }: ReceiptFormProps)
       console.error("Error saving receipt:", error);
       toast({ title: "Save Failed", description: "Could not save the receipt to Firestore. Please check your config.", variant: "destructive" });
     }
-    generateFromPreview(receipt.clientName)
   };
 
   const handlePrint = () => {
@@ -119,7 +119,7 @@ export function ReceiptForm({ onShowHistory,onShowAnalytics }: ReceiptFormProps)
               </Button>
 
               <Button bg-primary variant="ghost" size="sm" onClick={onShowAnalytics} className="h-9">
-                <TimerReset className="h-4 w-4  mr-2" /> Analytics
+                <TimerReset className="h-4 w-4  mr-2" /> An
               </Button>
             </div>
           </CardHeader>
