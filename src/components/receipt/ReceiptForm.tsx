@@ -9,7 +9,7 @@ import { Separator } from "@/components/ui/separator";
 import { Receipt, ReceiptItem, generateReceiptId } from "@/lib/receipt-utils";
 import { ReceiptItemRow } from "./ReceiptItemRow";
 import { ReceiptPreview } from "./ReceiptPreview";
-import { PlusCircle, Save, Printer, History, RotateCcw, BadgeDollarSign, TimerReset } from "lucide-react";
+import { PlusCircle, Save, Printer, History, RotateCcw, BadgeDollarSign, TimerReset, EyeOff, Eye } from "lucide-react";
 import { format } from "date-fns";
 import { doc, setDoc } from "firebase/firestore";
 import { db } from "@/lib/firebase";
@@ -23,6 +23,13 @@ interface ReceiptFormProps {
 
 export function ReceiptForm({ onShowHistory,onShowAnalytics }: ReceiptFormProps) {
   const { toast } = useToast();
+    const [showPreview, setShowPreview] = useState(false);
+
+    useEffect(() => {
+  const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
+  setShowPreview(isDesktop);
+}, []);
+
   const [receipt, setReceipt] = useState<Receipt>({
     id: '',
     receiptNumber: '',
@@ -256,15 +263,34 @@ export function ReceiptForm({ onShowHistory,onShowAnalytics }: ReceiptFormProps)
         </Card>
       </div>
 
-      <div className="sticky top-8">
-        <h2 className="text-sm font-bold text-muted-foreground uppercase tracking-widest mb-4 flex items-center gap-2 no-print">
+        <div className="sticky top-8">
+      <div className="flex items-center justify-between mb-4 no-print">
+        <h2 className="text-sm font-bold text-muted-foreground uppercase tracking-widest flex items-center gap-2">
           <RotateCcw className="h-4 w-4" /> Live Preview
         </h2>
+
+        <button
+          onClick={() => setShowPreview((prev) => !prev)}
+          className="text-xs flex items-center gap-1 px-2 py-1 rounded-md border hover:bg-muted transition"
+        >
+          {showPreview ? (
+            <>
+              <EyeOff className="h-4 w-4" /> Hide
+            </>
+          ) : (
+            <>
+              <Eye className="h-4 w-4" /> Show
+            </>
+          )}
+        </button>
+      </div>
+
+      {showPreview && (
         <div className="no-print">
-          
           <ReceiptPreview receipt={receipt} />
         </div>
-      </div>
+      )}
+    </div>
     </div>
   );
 }
