@@ -290,6 +290,7 @@ export function ReceiptForm({ onShowHistory,onShowAnalytics }: ReceiptFormProps)
           <ReceiptPreview receipt={receipt} />
         </div>
       )}
+
     </div>
     </div>
   );

@@ -46,7 +46,7 @@ export function ReceiptItemRow({ item, onUpdate, onRemove }: ReceiptItemRowProps
       <div className="md:col-span-4 space-y-1">
         <div className="flex items-center justify-between">
           <label className="text-xs font-semibold uppercase text-muted-foreground">Description / Specs</label>
-          <Button
+          {/* <Button
             variant="ghost"
             size="sm"
             className="h-6 text-primary hover:text-accent flex gap-1 items-center px-1"
@@ -55,7 +55,7 @@ export function ReceiptItemRow({ item, onUpdate, onRemove }: ReceiptItemRowProps
           >
             {isGenerating ? <Loader2 className="h-3 w-3 animate-spin" /> : <Sparkles className="h-3 w-3" />}
             <span className="text-[10px]">AI Enhance</span>
-          </Button>
+          </Button> */}
         </div>
         <Textarea
           placeholder="RAM, CPU, Storage..."

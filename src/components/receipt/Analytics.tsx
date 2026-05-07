@@ -118,7 +118,7 @@ export function Analytics({ onBack }: ReceiptHistoryProps) {
 
     filteredHistory.forEach((r) => {
       revenue += r.grandTotal || 0;
-      cost += r.costPrice || 0; // FIXED
+      cost += r.grandTotal || 0; // FIXED
     });
 
     return {

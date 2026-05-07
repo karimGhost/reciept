@@ -22,6 +22,7 @@ export interface ReceiptItem {
 }
 
 export interface Receipt {
+
   id: string;
   receiptNumber: string;
   date: string;
