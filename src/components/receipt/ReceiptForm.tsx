@@ -23,13 +23,9 @@ interface ReceiptFormProps {
 
 export function ReceiptForm({ onShowHistory,onShowAnalytics }: ReceiptFormProps) {
   const { toast } = useToast();
-    const [showPreview, setShowPreview] = useState(false);
+    const [showPreview, setShowPreview] = useState(true);
 
-    useEffect(() => {
-  const isDesktop = window.matchMedia("(min-width: 1024px)").matches;
-  setShowPreview(isDesktop);
-}, []);
-
+  
   const [receipt, setReceipt] = useState<Receipt>({
     id: '',
     receiptNumber: '',

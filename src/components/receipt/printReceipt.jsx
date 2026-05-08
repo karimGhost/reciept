@@ -34,7 +34,12 @@ export function printReceipt(receipt) {
           .sultan {
             color: #144AA9;
           }
-
+          .TANColor {
+          color: #A21CAF;
+          }
+          .txtBlu {
+          color: #010f27;
+          }
           .sultanBORDER {
             border-color: #144AA9;
           }

@@ -40,7 +40,7 @@ export function ReceiptPreview({ receipt }: ReceiptPreviewProps) {
     className="text-4xl font-black tracking-[-0.06em] leading-none whitespace-nowrap"
     style={{ fontFamily: "Arial Black, Arial, sans-serif" }}
   >
-    <span className="text-fuchsia-700">SULTAN</span>
+    <span className="TANColor text-fuchsia-700">SULTAN</span>
     <span className="text-blue-600">TECH</span>
     <span className="text-blue-700">KENYA</span>
   </h1>
@@ -63,7 +63,7 @@ export function ReceiptPreview({ receipt }: ReceiptPreviewProps) {
 
   <span className="text-blue-600">MP</span>
 
-  <span className="text-fuchsia-700">UTERS</span>
+  <span className="TANColor text-fuchsia-700">UTERS</span>
 </div>
 </div>
       <div className="mt-4 text-xs sm:text-sm text-muted-foreground space-y-2">
@@ -88,7 +88,7 @@ export function ReceiptPreview({ receipt }: ReceiptPreviewProps) {
       </div>
     </div>
 
-    <div className="text-left sm:text-right shrink-0">
+    <div className="text-left txtBlu sm:text-right shrink-0">
       <Badge
         variant={
           receipt?.paymentStatus === "Paid"
