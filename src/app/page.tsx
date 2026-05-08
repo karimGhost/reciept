@@ -29,10 +29,42 @@ export default function Home() {
             <div className="p-2 bg-accent rounded-lg">
               <Monitor className="h-8 w-8 text-primary" />
             </div>
-            <div>
-              <h1 className="text-2xl font-black tracking-tight uppercase">SultantechKenya</h1>
-              <p className="text-xs font-bold text-accent tracking-[0.2em] -mt-1 uppercase">Receipt Maker</p>
-            </div>
+     <div className="leading-none">
+  <h1
+    className="
+      text-3xl
+      sm:text-4xl
+      font-black
+      tracking-[-0.06em]
+      leading-none
+    "
+    style={{
+      fontFamily: "Arial Black, sans-serif",
+    }}
+  >
+    <span className="text-fuchsia-700">Sultan</span>
+    <span className="text-blue-600">tech</span>
+    <span className="text-blue-700">Kenya</span>
+  </h1>
+
+  <p
+    className="
+      mt-1
+      text-[10px]
+      sm:text-xs
+      font-extrabold
+      uppercase
+      tracking-[0.45em]
+      text-blue-700
+      ml-1
+    "
+    style={{
+      fontFamily: "Arial, sans-serif",
+    }}
+  >
+    RECEIPT MAKER
+  </p>
+</div>
           </div>
           <div className="hidden md:block text-right">
             <p className="text-sm font-medium opacity-80 italic">Precision Technology, Professional Service</p>
