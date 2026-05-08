@@ -1,5 +1,6 @@
 import { renderToStaticMarkup } from "react-dom/server";
 import { ReceiptPreview } from "./ReceiptPreview";
+
 export function printReceipt(receipt) {
   const printWindow = window.open("", "_blank");
 
@@ -12,45 +13,47 @@ export function printReceipt(receipt) {
     <ReceiptPreview receipt={receipt} />
   );
 
-  printWindow.document.open();
   printWindow.document.write(`
     <html>
       <head>
         <title>Receipt</title>
-          <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css" rel="stylesheet">
+
+        <link
+          rel="stylesheet"
+          href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.19/dist/tailwind.min.css"
+        />
 
         <style>
           body {
             margin: 0;
+            padding: 20px;
             font-family: Arial, sans-serif;
+            background: white;
           }
-.sultan{
-color: #144AA9;
-}
-.sultanBORDER{
-  border-color: #144AA9;
-}
-          /* Optional: force full width */
-          #root {
-            width: 100%;
+
+          .sultan {
+            color: #144AA9;
+          }
+
+          .sultanBORDER {
+            border-color: #144AA9;
           }
         </style>
       </head>
+
       <body>
-        <div id="root">${html}</div>
+        <div id="root">
+          ${html}
+        </div>
+
+        <script>
+          setTimeout(() => {
+            window.print();
+          }, 500);
+        </script>
       </body>
     </html>
   `);
+
   printWindow.document.close();
-
-  // Wait for content to render before printing
-  printWindow.onload = () => {
-    printWindow.focus();
-    printWindow.print();
-
-    // optional auto close
-    printWindow.onafterprint = () => {
-      printWindow.close();
-    };
-  };
 }

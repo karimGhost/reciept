@@ -12,111 +12,235 @@ interface ReceiptPreviewProps {
 
 export function ReceiptPreview({ receipt }: ReceiptPreviewProps) {
   return (
-    <Card id="printable-receipt" className="p-8 max-w-3xl mx-auto bg-white sultanBORDER shadow-xl border-t-8 border-t-primary rounded-none">
-      <div className="flex justify-between items-start mb-8">
-        <div>
-          
-          <h1 className="text-3xl font-bold text-primary sultan tracking-tight">SULTANTECHKENYA</h1>
-          <p className="text-lg font-medium text-muted-foreground">COMPUTERS</p>
-          <div className="mt-4 text-sm text-muted-foreground space-y-1">
-            <div className="flex items-center gap-2">
-              <MapPin className="h-3 w-3" />
-              <span>00400 Tom mboya street, Imenti house , Nairobi, Kenya</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Smartphone className="h-3 w-3" />
-              <span>+254 791 312 121</span>
-            </div>
-            <div className="flex items-center gap-2">
-              <Mail className="h-3 w-3" />
-              <span>sultantechkenyacomputers</span>
-            </div>
-          </div>
+  <Card
+  id="printable-receipt"
+  className="
+    w-full
+    overflow-hidden
+    bg-white
+    shadow-xl
+    border-t-8
+    border-t-primary
+    sultanBORDER
+    rounded-none
+
+    p-4
+    sm:p-6
+    md:p-8
+
+    max-w-3xl
+    mx-auto
+  "
+>
+  {/* HEADER */}
+  <div className="flex flex-col gap-6 sm:flex-row sm:justify-between sm:items-start mb-8">
+    <div className="min-w-0">
+      <h1 className="text-2xl sm:text-3xl font-bold text-primary sultan tracking-tight break-words">
+        SULTANTECHKENYA
+      </h1>
+
+      <p className="text-base sm:text-lg font-medium text-muted-foreground">
+        COMPUTERS
+      </p>
+
+      <div className="mt-4 text-xs sm:text-sm text-muted-foreground space-y-2">
+        <div className="flex items-start gap-2">
+          <MapPin className="h-3 w-3 mt-1 shrink-0" />
+          <span className="break-words">
+            00400 Tom Mboya Street, Imenti House, Nairobi, Kenya
+          </span>
         </div>
-        <div className="text-right">
-          <Badge variant={receipt?.paymentStatus === 'Paid' ? 'default' : 'destructive'} className="mb-4 uppercase px-4 py-1">
-            {receipt?.paymentStatus || "N/A"}
-          </Badge>
-          <h2 className="text-xl font-bold">RECEIPT</h2>
-          <div className="mt-2 text-sm">
-            <p className="text-muted-foreground">Receipt No:</p>
-            <p className="font-mono font-bold">{receipt?.receiptNumber}</p>
-          </div>
-          <div className="mt-2 text-sm">
-            <p className="text-muted-foreground">Date:</p>
-            <p className="font-bold">{receipt?.date}</p>
-          </div>
+
+        <div className="flex items-center gap-2">
+          <Smartphone className="h-3 w-3 shrink-0" />
+          <span>+254 791 312 121</span>
         </div>
+
+        <div className="flex items-center gap-2">
+          <Mail className="h-3 w-3 shrink-0" />
+          <span className="break-all">
+            sultantechkenyacomputers
+          </span>
+        </div>
+      </div>
+    </div>
+
+    <div className="text-left sm:text-right shrink-0">
+      <Badge
+        variant={
+          receipt?.paymentStatus === "Paid"
+            ? "default"
+            : "destructive"
+        }
+        className="mb-4 uppercase px-4 py-1"
+      >
+        {receipt?.paymentStatus || "N/A"}
+      </Badge>
+
+      <h2 className="text-lg sm:text-xl font-bold">
+        RECEIPT
+      </h2>
+
+      <div className="mt-2 text-xs sm:text-sm">
+        <p className="text-muted-foreground">Receipt No:</p>
+        <p className="font-mono font-bold break-all">
+          {receipt?.receiptNumber}
+        </p>
       </div>
 
-      <div className="grid grid-cols-2 gap-8 mb-8 border-y py-4 border-muted">
-        <div>
-          <h3 className="text-xs font-bold uppercase text-muted-foreground mb-1">Bill To:</h3>
-          <p className="text-lg font-bold">{receipt?.clientName || 'N/A'}</p>
-          <p className="text-sm text-muted-foreground">{receipt?.clientContact || 'No contact provided'}</p>
-        </div>
-        <div className="text-right">
-          <h3 className="text-xs font-bold uppercase text-muted-foreground mb-1">Payment Method:</h3>
-          <p className="text-lg font-bold">{receipt?.paymentMethod}</p>
-        </div>
+      <div className="mt-2 text-xs sm:text-sm">
+        <p className="text-muted-foreground">Date:</p>
+        <p className="font-bold">{receipt?.date}</p>
+      </div>
+    </div>
+  </div>
+
+  {/* CLIENT INFO */}
+  <div
+    className="
+      grid
+      grid-cols-1
+      sm:grid-cols-2
+      gap-6
+      mb-8
+      border-y
+      py-4
+      border-muted
+    "
+  >
+    <div>
+      <h3 className="text-xs font-bold uppercase text-muted-foreground mb-1">
+        Bill To:
+      </h3>
+
+      <p className="text-base sm:text-lg font-bold break-words">
+        {receipt?.clientName || "N/A"}
+      </p>
+
+      <p className="text-sm text-muted-foreground break-words">
+        {receipt?.clientContact || "No contact provided"}
+      </p>
+    </div>
+
+    <div className="sm:text-right">
+      <h3 className="text-xs font-bold uppercase text-muted-foreground mb-1">
+        Payment Method:
+      </h3>
+
+      <p className="text-base sm:text-lg font-bold">
+        {receipt?.paymentMethod}
+      </p>
+    </div>
+  </div>
+
+  {/* TABLE */}
+<div className="mb-8">
+  <table className="w-full border-collapse table-fixed">
+    <thead>
+      <tr className="text-left border-b-2 border-primary/20">
+        <th className="py-2 pr-2 text-xs font-bold uppercase text-muted-foreground w-[45%]">
+          Item
+        </th>
+
+        <th className="py-2 px-1 text-center text-xs font-bold uppercase text-muted-foreground w-[15%]">
+          Qty
+        </th>
+
+       
+
+        <th className="py-2 pl-1 text-right text-xs font-bold uppercase text-muted-foreground w-[20%]">
+          Total
+        </th>
+      </tr>
+    </thead>
+
+    <tbody className="divide-y divide-muted">
+      {receipt.items.map((item) => (
+        <tr key={item.id} className="align-top">
+          <td className="py-4 pr-2">
+            <p className="font-bold text-sm break-words">
+              {item.name || "Untitled Item"}
+            </p>
+
+            <p className="text-xs text-muted-foreground mt-1 whitespace-pre-line break-words">
+              {item.description}
+            </p>
+          </td>
+
+          <td className="py-4 px-1 text-center text-sm">
+            {item.quantity}
+          </td>
+
+        
+          <td className="py-4 pl-1 text-right font-bold text-sm whitespace-nowrap">
+            {formatCurrency(item.total)}
+          </td>
+        </tr>
+      ))}
+    </tbody>
+  </table>
+</div>
+
+  {/* TOTALS */}
+  <div className="flex justify-center sm:justify-end mb-8">
+    <div className="w-full sm:w-64 space-y-2">
+      <div className="flex justify-between text-sm">
+        <span className="text-muted-foreground">
+          Subtotal
+        </span>
+
+        <span>
+          {formatCurrency(receipt.subtotal)}
+        </span>
       </div>
 
-      <div className="mb-8">
-        <table className="w-full">
-          <thead>
-            <tr className="text-left border-b-2 border-primary/20 pb-2">
-              <th className="py-2 text-xs font-bold uppercase text-muted-foreground">Item</th>
-              <th className="py-2 text-center text-xs font-bold uppercase text-muted-foreground w-16">Qty</th>
-              <th className="py-2 text-right text-xs font-bold uppercase text-muted-foreground">Price</th>
-              <th className="py-2 text-right text-xs font-bold uppercase text-muted-foreground">Total</th>
-            </tr>
-          </thead>
-          <tbody className="divide-y divide-muted">
-            {receipt.items.map((item) => (
-              <tr key={item.id}>
-                <td className="py-4">
-                  <p className="font-bold">{item.name || 'Untitled Item'}</p>
-                  <p className="text-xs text-muted-foreground mt-1 whitespace-pre-line">{item.description}</p>
-                </td>
-                <td className="py-4 text-center">{item.quantity}</td>
-                <td className="py-4 text-right">{formatCurrency(item.unitPrice)}</td>
-                <td className="py-4 text-right font-bold">{formatCurrency(item.total)}</td>
-              </tr>
-            ))}
-          </tbody>
-        </table>
-      </div>
+      {receipt.taxAmount > 0 && (
+        <div className="flex justify-between text-sm">
+          <span className="text-muted-foreground">
+            Tax ({receipt.taxRate}%)
+          </span>
 
-      <div className="flex justify-end mb-8">
-        <div className="w-64 space-y-2">
-          <div className="flex justify-between text-sm">
-            <span className="text-muted-foreground">Subtotal</span>
-            <span>{formatCurrency(receipt.subtotal)}</span>
-          </div>
-          {receipt.taxAmount > 0 && (
-            <div className="flex justify-between text-sm">
-              <span className="text-muted-foreground">Tax ({receipt.taxRate}%)</span>
-              <span>{formatCurrency(receipt.taxAmount)}</span>
-            </div>
-          )}
-          {receipt.discount > 0 && (
-            <div className="flex justify-between text-sm">
-              <span className="text-muted-foreground">Discount</span>
-              <span className="text-destructive">-{formatCurrency(receipt.discount)}</span>
-            </div>
-          )}
-          <Separator />
-          <div className="flex justify-between text-lg font-bold text-primary pt-1">
-            <span>Total</span>
-            <span>{formatCurrency(receipt.grandTotal)}</span>
-          </div>
+          <span>
+            {formatCurrency(receipt.taxAmount)}
+          </span>
         </div>
-      </div>
+      )}
 
-      <div className="mt-12 text-center border-t pt-8">
-        <p className="text-sm font-bold text-muted-foreground mb-1">Thank you for choosing Sultantech kenya Computers!</p>
-        <p className="text-xs text-muted-foreground">This is a computer-generated receipt No Signature required (©)SultantechComputers Kenya.</p>
+      {receipt.discount > 0 && (
+        <div className="flex justify-between text-sm">
+          <span className="text-muted-foreground">
+            Discount
+          </span>
+
+          <span className="text-destructive">
+            -{formatCurrency(receipt.discount)}
+          </span>
+        </div>
+      )}
+
+      <Separator />
+
+      <div className="flex justify-between text-lg font-bold text-primary pt-1">
+        <span>Total</span>
+
+        <span>
+          {formatCurrency(receipt.grandTotal)}
+        </span>
       </div>
-    </Card>
+    </div>
+  </div>
+
+  {/* FOOTER */}
+  <div className="mt-12 text-center border-t pt-8">
+    <p className="text-sm font-bold text-muted-foreground mb-1">
+      Thank you for choosing Sultantech Kenya Computers!
+    </p>
+
+    <p className="text-xs text-muted-foreground leading-relaxed">
+      This is a computer-generated receipt. No signature required.
+      © Sultantech Computers Kenya.
+    </p>
+  </div>
+</Card>
   );
 }

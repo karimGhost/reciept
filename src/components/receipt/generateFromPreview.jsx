@@ -60,9 +60,7 @@ export async function generateFromPreview(receipt) {
 
   pdf.addImage(imgData, "PNG", 0, 0, pdfWidth, pdfHeight);
 
-  const fileName = `${receipt.clientName
-  .replace(/\s+/g, "_")
-  .toLowerCase()}_${receipt.id || Date.now()}.pdf`;
+  const fileName = `${receipt?.clientName?.replace(/\s+/g, "_").toLowerCase()}_${receipt?.id || Date.now()}.pdf`;
 pdf.save(fileName);
 
 }

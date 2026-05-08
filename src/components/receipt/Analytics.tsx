@@ -163,14 +163,14 @@ export function Analytics({ onBack }: ReceiptHistoryProps) {
 
           <div className="p-4 border rounded-xl">
             <p className="text-xs text-muted-foreground">Revenue</p>
-            <p className="text-xl font-bold">
-              {formatCurrency(profitStats.revenue)}
-            </p>
+           <p className="text-xs sm:text-sm md:text-base font-bold truncate">
+  {formatCurrency(profitStats.revenue)}
+</p>
           </div>
 
           <div className="p-4 border rounded-xl">
             <p className="text-xs text-muted-foreground">Profit</p>
-            <p className="text-xl font-bold text-green-600">
+            <p className="text-xl text-xs sm:text-sm md:text-base font-bold text-green-600 truncate">
               {formatCurrency(profitStats.profit)}
             </p>
           </div>

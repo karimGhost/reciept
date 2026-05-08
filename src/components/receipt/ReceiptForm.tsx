@@ -9,7 +9,7 @@ import { Separator } from "@/components/ui/separator";
 import { Receipt, ReceiptItem, generateReceiptId } from "@/lib/receipt-utils";
 import { ReceiptItemRow } from "./ReceiptItemRow";
 import { ReceiptPreview } from "./ReceiptPreview";
-import { PlusCircle, Save, Printer, History, RotateCcw, BadgeDollarSign, TimerReset, EyeOff, Eye } from "lucide-react";
+import { PlusCircle, Save, Printer, History, RotateCcw, BadgeDollarSign, TimerReset, EyeOff, Eye, DollarSignIcon } from "lucide-react";
 import { format } from "date-fns";
 import { doc, setDoc } from "firebase/firestore";
 import { db } from "@/lib/firebase";
@@ -91,9 +91,9 @@ export function ReceiptForm({ onShowHistory,onShowAnalytics }: ReceiptFormProps)
       toast({ title: "Client Name Required", description: "Please enter a client name before saving.", variant: "destructive" });
       return;
     }
-    generateFromPreview(receipt.clientName)
 
     try {
+          generateFromPreview(receipt)
 
       await setDoc(doc(db, "receipts", receipt.id), {
         ...receipt,
@@ -104,6 +104,7 @@ export function ReceiptForm({ onShowHistory,onShowAnalytics }: ReceiptFormProps)
       console.error("Error saving receipt:", error);
       toast({ title: "Save Failed", description: "Could not save the receipt to Firestore. Please check your config.", variant: "destructive" });
     }
+
   };
 
   const handlePrint = () => {
@@ -125,8 +126,8 @@ export function ReceiptForm({ onShowHistory,onShowAnalytics }: ReceiptFormProps)
                 <History className="h-4 w-4 mr-2" /> History
               </Button>
 
-              <Button bg-primary variant="ghost" size="sm" onClick={onShowAnalytics} className="h-9">
-                <TimerReset className="h-4 w-4  mr-2" /> An
+              <Button style={{background:"green"}}  variant="default" size="sm" onClick={onShowAnalytics} className="h-9 ">
+                <DollarSignIcon className="h-4 w-4  mr-2" /> An
               </Button>
             </div>
           </CardHeader>
