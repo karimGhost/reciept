@@ -4,7 +4,7 @@ import { Receipt, formatCurrency } from "@/lib/receipt-utils";
 import { Card } from "@/components/ui/card";
 import { Separator } from "@/components/ui/separator";
 import { Badge } from "@/components/ui/badge";
-import { Monitor, Smartphone, Mail, MapPin, Settings } from "lucide-react";
+import { Monitor, Smartphone, Mail, MapPin, Settings, Cog } from "lucide-react";
 
 interface ReceiptPreviewProps {
   receipt: Receipt;
@@ -35,60 +35,36 @@ export function ReceiptPreview({ receipt }: ReceiptPreviewProps) {
   {/* HEADER */}
   <div className="flex flex-col gap-6 sm:flex-row sm:justify-between sm:items-start mb-8">
     <div className="min-w-0">
-     <div className="leading-none">
+  <div className="leading-none w-fit">
   <h1
-    className="
-      text-3xl
-      sm:text-5xl
-      font-black
-      tracking-[-0.06em]
-      leading-none
-      break-words
-    "
-    style={{
-      fontFamily: "Arial Black, sans-serif",
-    }}
+    className="text-4xl font-black tracking-[-0.06em] leading-none whitespace-nowrap"
+    style={{ fontFamily: "Arial Black, Arial, sans-serif" }}
   >
     <span className="text-fuchsia-700">SULTAN</span>
     <span className="text-blue-600">TECH</span>
     <span className="text-blue-700">KENYA</span>
   </h1>
 
-  <div
-    className="
-      mt-1
-      flex
-      items-center
-      text-sm
-      sm:text-lg
-      font-extrabold
-      uppercase
-      tracking-[0.25em]
-      leading-none
-    "
+ <div
+  className="mt-1 flex items-center leading-none whitespace-nowrap font-black text-2xl"
+  style={{ fontFamily: "Arial Black, Arial, sans-serif" }}
+>
+  <span className="text-blue-600">C</span>
+
+  <span
+    className="text-blue-600 inline-block mx-[1px] leading-none"
     style={{
-      fontFamily: "Arial Black, sans-serif",
+      fontSize: "30px",
+      transform: "translateY(1px)",
     }}
   >
-    <span className="text-blue-600">C</span>
+    ⚙
+  </span>
 
-    <Settings
-      className="
-        mx-[2px]
-        h-5
-        w-5
-        sm:h-7
-        sm:w-7
-        text-blue-600
-        inline-block
-      "
-      strokeWidth={3}
-    />
+  <span className="text-blue-600">MP</span>
 
-    <span className="text-blue-600">MP</span>
-
-    <span className="text-fuchsia-700">UTERS</span>
-  </div>
+  <span className="text-fuchsia-700">UTERS</span>
+</div>
 </div>
       <div className="mt-4 text-xs sm:text-sm text-muted-foreground space-y-2">
         <div className="flex items-start gap-2">
@@ -284,7 +260,7 @@ export function ReceiptPreview({ receipt }: ReceiptPreviewProps) {
     </p>
 
     <p className="text-xs text-muted-foreground leading-relaxed">
-      This is a computer-generated receipt. No signature required.
+      Goods once sold Cannot Be Returned.
       © Sultantech Computers Kenya.
     </p>
   </div>
