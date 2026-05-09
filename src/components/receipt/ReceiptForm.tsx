@@ -246,7 +246,7 @@ export function ReceiptForm({ onShowHistory,onShowAnalytics }: ReceiptFormProps)
                <Button onClick={handleSave} className="bg-primary hover:bg-primary/90">
                  <Save className="h-4 w-4 mr-2" /> Save
                </Button>
-               <Button variant="outline" onClick={() => printReceipt(receipt)}>
+               <Button variant="outline" onClick={() => receipt.clientName ?  printReceipt(receipt) : alert("sultan please fill in the client name first!")}>
                  <Printer className="h-4 w-4 mr-2" /> Print / PDF
                </Button>
              </div>

@@ -16,7 +16,7 @@ export function printReceipt(receipt) {
   printWindow.document.write(`
     <html>
       <head>
-        <title>Receipt</title>
+        <title>${receipt?.clientName + "_" + receipt?.id}</title>
 
         <link
           rel="stylesheet"
